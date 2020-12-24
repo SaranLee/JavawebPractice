@@ -13,6 +13,7 @@
 <body>
 <%
     String msg = (String) request.getAttribute("msg");
+    System.out.println("msg = " + msg);
     if(msg == null)
         msg = "";
 %>
