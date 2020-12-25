@@ -48,8 +48,8 @@ public class UserDaoImpl implements UserDao {
                 temp.setUsername(rs.getString("username"));
                 temp.setPassword(rs.getString("password"));
                 users.add(temp);
-                return users;
             }
+            return users;
         } catch (SQLException e) {
             e.printStackTrace();
         }

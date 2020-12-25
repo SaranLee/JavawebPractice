@@ -17,7 +17,7 @@
     if(msg == null)
         msg = "";
 %>
-    <form action="">
+    <form action="http://localhost:8080/mvcDemo/login">
         <input type="text" name="username"> <br>
         <input type="password" name="password"> <br>
         <span style="color: red; font-size: 10px"><%=msg%></span> <br>

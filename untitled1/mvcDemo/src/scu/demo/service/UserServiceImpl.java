@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User login(User user) {
         User rtnUser = dao.getByUsername(user);
-        if(user != null && rtnUser.getPassword().equals(user.getPassword())) {
+        if(rtnUser != null && rtnUser.getPassword().equals(user.getPassword())) {
             System.out.println("user = rtnuser");
             return rtnUser;
         }
