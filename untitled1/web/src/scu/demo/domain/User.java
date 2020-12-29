@@ -3,13 +3,15 @@ package scu.demo.domain;
 public class User {
     private String username;
     private String password;
+    private String imgUrl;
 
     public User() {
     }
 
-    public User(String username, String password) {
+    public User(String username, String password, String imgUrl) {
         this.username = username;
         this.password = password;
+        this.imgUrl = imgUrl;
     }
 
     public String getUsername() {
@@ -26,5 +28,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

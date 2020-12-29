@@ -19,6 +19,7 @@ public class UserServiceImpl implements UserService {
         User rtnUser = dao.getByUsername(user);
         if(rtnUser != null && rtnUser.getPassword().equals(user.getPassword())) {
             System.out.println("user = rtnuser");
+            rtnUser.setPassword(null);
             return rtnUser;
         }
         else
