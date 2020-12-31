@@ -1,12 +1,18 @@
 package scu.demo.domain;
 
-public class Emp {
+import java.util.Date;
+
+public class Emp extends EmpExtend{
     private Integer empNo;
-    private String name;
+    private String eName;
+    private String eGender;
+    private Integer eAge;
     private String job;
     private Integer mgr;
+    private Date hireDate;
     private double sal;
-    private Integer depNo;
+    private double comm;
+    private Integer deptNo;
 
     public Integer getEmpNo() {
         return empNo;
@@ -16,12 +22,28 @@ public class Emp {
         this.empNo = empNo;
     }
 
-    public String getName() {
-        return name;
+    public String getEName() {
+        return eName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setEName(String eName) {
+        this.eName = eName;
+    }
+
+    public String getEGender() {
+        return eGender;
+    }
+
+    public void setEGender(String eGender) {
+        this.eGender = eGender;
+    }
+
+    public Integer getEAge() {
+        return eAge;
+    }
+
+    public void setEAge(Integer eAge) {
+        this.eAge = eAge;
     }
 
     public String getJob() {
@@ -40,6 +62,14 @@ public class Emp {
         this.mgr = mgr;
     }
 
+    public Date getHireDate() {
+        return hireDate;
+    }
+
+    public void setHireDate(Date hireDate) {
+        this.hireDate = hireDate;
+    }
+
     public double getSal() {
         return sal;
     }
@@ -48,11 +78,35 @@ public class Emp {
         this.sal = sal;
     }
 
-    public Integer getDepNo() {
-        return depNo;
+    public double getComm() {
+        return comm;
     }
 
-    public void setDepNo(Integer depNo) {
-        this.depNo = depNo;
+    public void setComm(double comm) {
+        this.comm = comm;
+    }
+
+    public Integer getDeptNo() {
+        return deptNo;
+    }
+
+    public void setDeptNo(Integer deptNo) {
+        this.deptNo = deptNo;
+    }
+
+    @Override
+    public String toString() {
+        return "Emp{" +
+                "empNo=" + empNo +
+                ", eName='" + eName + '\'' +
+                ", eGender='" + eGender + '\'' +
+                ", eAge=" + eAge +
+                ", job='" + job + '\'' +
+                ", mgr=" + mgr +
+                ", hireDate=" + hireDate +
+                ", sal=" + sal +
+                ", comm=" + comm +
+                ", deptNo=" + deptNo +
+                '}';
     }
 }

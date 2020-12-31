@@ -91,4 +91,8 @@ public class UserDaoImpl implements UserDao {
             e.printStackTrace();
         }
     }
+
+    public static void main(String[] args) {
+
+    }
 }

@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/adminlte/dist/css/adminlte.min.css">
     <!-- 离线 Google 字体: Source Sans Pro -->
     <link href="${pageContext.request.contextPath}/static/adminlte/dist/css/google.css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <!-- layui -->
+    <!-- layer -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/layui/css/modules/layer/default/layer.css">
 </head>
 <body class="sidebar-mini layout-fixed" style="height: auto;">
@@ -106,10 +106,6 @@
 <!-- ./wrapper -->
 
 <!-- 载入脚本 -->
-<!-- 解决使用 Bootstrap 提示工具与 jQuery UI 提示工具冲突 -->
-<script>
-    $.widget.bridge('uibutton', $.ui.button)
-</script>
 <!-- jQuery -->
 <script src="${pageContext.request.contextPath}/static/adminlte/plugins/jquery/jquery.min.js"></script>
 <%--<script src="${pageContext.request.contextPath}/static/js/jquery-1.12.4.min.js"></script>--%>
@@ -123,15 +119,13 @@
 <script src="${pageContext.request.contextPath}/static/adminlte/dist/js/demo.js"></script>
 <script src="${pageContext.request.contextPath}/static/adminlte/dist/js/pages/dashboard3.js"></script>
 <script src="${pageContext.request.contextPath}/static/layui/lay/modules/layer.js"></script>
+<!-- 自己的js -->
+<script src="${pageContext.request.contextPath}/static/js/my.js"></script>
 
 <%-- 设置高亮 --%>
 <script>
-    $("li:contains('添加用户')").addClass("menu-open");
-    $("a:contains('添加用户')").addClass("active");
-    $("a:contains('用户管理')").addClass("active");
-
-    $("a:contains('用户列表')").attr("href", "${pageContext.request.contextPath}/user?method=list");
-    $("a:contains('添加用户')").attr("href", "${pageContext.request.contextPath}/viewpage?pageName=addUser.jsp");
+    setHighlightAndMenuOpen("用户管理", "添加用户");
+    <%--setNavHref("${pageContext.request.contextPath}");--%>
 
     //点击添加用户按钮
     $("#btn_addUser").click(function () {
@@ -146,7 +140,7 @@
                 //ajax请求添加用户
                 $.post("${pageContext.request.contextPath}/user?method=add", {username:username, password:password}, function(respText){
                     if(respText === "ok"){
-                        layer.msg("添加成功", {time:1000, offset:"auto", id:"modifyAvatarLayer"}, function(){
+                        layer.msg("添加成功", {time:1000, offset:"auto"}, function(){
                             window.location = "${pageContext.request.contextPath}/viewpage?pageName=addUser.jsp";
                         });
                     }

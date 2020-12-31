@@ -12,8 +12,8 @@
 </head>
 <body>
     <form action="http://192.168.0.27:8080/javaweb/login">
-        <input type="text" name="username"> <br>
-        <input type="password" name="password"> <br>
+        <input type="text" dName="username"> <br>
+        <input type="password" dName="password"> <br>
         <button type="submit">登$nbsp$nbsp录</button>
     </form>
 </body>

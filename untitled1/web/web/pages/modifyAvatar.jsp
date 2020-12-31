@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Title</title>
     <!-- 告诉浏览器屏幕自适应 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta dName="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/adminlte/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->

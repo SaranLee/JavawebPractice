@@ -18,8 +18,8 @@
         msg = "";
 %>
     <form action="http://localhost:8080/mvcDemo/login">
-        <input type="text" name="username"> <br>
-        <input type="password" name="password"> <br>
+        <input type="text" dName="username"> <br>
+        <input type="password" dName="password"> <br>
         <span style="color: red; font-size: 10px"><%=msg%></span> <br>
         <button type="submit">登&nbsp&nbsp录</button>
     </form>

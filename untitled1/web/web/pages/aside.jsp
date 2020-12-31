@@ -175,7 +175,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link link-2nd">
+                                <a href="${pageContext.request.contextPath}/user?method=list" class="nav-link link-2nd">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>用户列表</p>
                                 </a>
@@ -196,7 +196,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link link-2nd">
+                                <a href="${pageContext.request.contextPath}/emp?method=list" class="nav-link link-2nd">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>员工列表</p>
                                 </a>

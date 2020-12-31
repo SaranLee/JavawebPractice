@@ -321,10 +321,11 @@
 <script src="${pageContext.request.contextPath}/static/adminlte/plugins/chart.js/Chart.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/adminlte/dist/js/demo.js"></script>
 <script src="${pageContext.request.contextPath}/static/adminlte/dist/js/pages/dashboard3.js"></script>
+<!-- 自己的js -->
+<script src="${pageContext.request.contextPath}/static/js/my.js"></script>
 
 <script>
-    $("a:contains('用户列表')").attr("href", "${pageContext.request.contextPath}/user?method=list");
-    $("a:contains('添加用户')").attr("href", "${pageContext.request.contextPath}/viewpage?pageName=addUser.jsp");
+    <%--setNavHref("${pageContext.request.contextPath}");--%>
 </script>
 </body>
 </html>

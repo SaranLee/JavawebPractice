@@ -35,7 +35,7 @@
             <form action="${pageContext.request.contextPath}/user?method=login" method="post">
                 <%--用户名/邮箱--%>
                 <div class="input-group mb-3">
-                    <input type="email" class="form-control" placeholder="用户名" name="username">
+                    <input type="text" class="form-control" placeholder="用户名" name="username">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>

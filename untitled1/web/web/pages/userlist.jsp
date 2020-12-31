@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/adminlte/dist/css/adminlte.min.css">
     <!-- 离线 Google 字体: Source Sans Pro -->
     <link href="${pageContext.request.contextPath}/static/adminlte/dist/css/google.css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <!-- layer -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/layui/css/modules/layer/default/layer.css">
 </head>
 <body class="sidebar-mini" style="height: auto;">
     <div class="wrapper">
@@ -76,9 +78,9 @@
                                         <tr>
                                             <td><%=++i%></td>
                                             <td><%=username%></td>
-                                            <td>
-                                                <button type="button" class="btn btn-block btn-danger btn-sm btn_del" id="<%=username%>">删除</button>
-                                                <%--<button type="button" class="btn btn-block btn-primary btn-sm">详情</button>--%>
+                                            <td style="text-align: center;">
+                                                <button type="button" class="btn btn-danger btn-sm btn_del col-lg-5" id="<%=username%>">删除</button>
+                                                <button type="button" class="btn btn-primary btn-sm col-lg-5">详情</button>
                                             </td>
                                         </tr>
                                         <%
@@ -141,21 +143,27 @@
 <script src="${pageContext.request.contextPath}/static/adminlte/plugins/chart.js/Chart.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/adminlte/dist/js/demo.js"></script>
 <script src="${pageContext.request.contextPath}/static/adminlte/dist/js/pages/dashboard3.js"></script>
+<script src="${pageContext.request.contextPath}/static/layui/lay/modules/layer.js"></script>
+<!-- 自己的js -->
+<script src="${pageContext.request.contextPath}/static/js/my.js"></script>
 
 <%-- 设置高亮 --%>
 <script>
-    $("li:contains('用户列表')").addClass("menu-open");
-    $("a:contains('用户列表')").addClass("active");
-    $("a:contains('用户管理')").addClass("active");
+    setHighlightAndMenuOpen("用户管理", "用户列表");
+    <%--setNavHref("${pageContext.request.contextPath}");--%>
 
-    $("a:contains('用户列表')").attr("href", "${pageContext.request.contextPath}/user?method=list");
-    $("a:contains('添加用户')").attr("href", "${pageContext.request.contextPath}/viewpage?pageName=addUser.jsp");
     $(".btn_del").click(function () {
         var username = $(this).attr("id");
         $.ajax({
             url: "${pageContext.request.contextPath}/user?method=delete&username=" + username,
-            success: function(){
-                window.location = "${pageContext.request.contextPath}/user?method=list";
+            success: function(rtnText){
+                if(rtnText === "ok"){
+                    layer.msg("删除成功", {time: 1000}, function () {
+                        window.location = "${pageContext.request.contextPath}/user?method=list";
+                    });
+                }else{
+                    layer.msg("删除失败");
+                }
             }
         })
     });

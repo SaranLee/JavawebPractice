@@ -2,16 +2,16 @@ package scu.demo.domain;
 
 public class Dept {
     private Integer deptNo;
-    private String name;
-    private String location;
+    private String dName;
+    private String loc;
 
     public Dept() {
     }
 
     public Dept(Integer deptNo, String name, String location) {
         this.deptNo = deptNo;
-        this.name = name;
-        this.location = location;
+        this.dName = name;
+        this.loc = location;
     }
 
     public Integer getDeptNo() {
@@ -22,19 +22,19 @@ public class Dept {
         this.deptNo = deptNo;
     }
 
-    public String getName() {
-        return name;
+    public String getDName() {
+        return dName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDName(String dName) {
+        this.dName = dName;
     }
 
-    public String getLocation() {
-        return location;
+    public String getLoc() {
+        return loc;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLoc(String loc) {
+        this.loc = loc;
     }
 }

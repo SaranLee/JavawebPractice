@@ -11,6 +11,6 @@
 
     <error-page>
         <error-code>404</error-code>
-        <location>/WEB-INF/404.jsp</location>
+        <loc>/WEB-INF/404.jsp</loc>
     </error-page>
 </web-app>

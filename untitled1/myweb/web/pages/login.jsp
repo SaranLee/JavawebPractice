@@ -18,8 +18,8 @@
         warning = "";
 %>
 <form action="http://192.168.0.27:8080/myweb/login">
-    <input type="text" name="username"> <br>
-    <input type="password" name="password"> <br>
+    <input type="text" dName="username"> <br>
+    <input type="password" dName="password"> <br>
     <p style="color: red"><%=warning %></p>
     <button type="submit">登&nbsp&nbsp录</button>
 </form>

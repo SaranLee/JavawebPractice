@@ -22,7 +22,6 @@ import java.util.List;
 public class UserServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         String methodName = req.getParameter("method");
         System.out.println("methodName: " + methodName);
         try {
@@ -42,6 +41,7 @@ public class UserServlet extends HttpServlet {
     protected void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserService userService = new UserServiceImpl();
         User temp = new User(req.getParameter("username"), req.getParameter("password"), null);
+        System.out.println("username=" + temp.getUsername() + ", password=" + temp.getPassword());
         User rtnUser = userService.login(temp);
         if (rtnUser != null) {
             //登录成功
@@ -49,7 +49,7 @@ public class UserServlet extends HttpServlet {
 //            boolean flag = false;
 //            Cookie[] cookies = req.getCookies();
 //            for(Cookie e : cookies){
-//                if(e.getName().equals("loginUser")){
+//                if(e.getDName().equals("loginUser")){
 //                    flag = true;
 //                    break;
 //                }
@@ -91,7 +91,7 @@ public class UserServlet extends HttpServlet {
     protected void add(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
         UserService userService = new UserServiceImpl();
-        userService.add(new User(req.getParameter("username"), req.getParameter("password"), req.getContextPath() + "static/adminlte/dist/img/avatar.png"));
+        userService.add(new User(req.getParameter("username"), req.getParameter("password"),  "/static/adminlte/dist/img/avatar.png"));
         PrintWriter out = resp.getWriter();
         out.print("ok");
         out.flush();
