@@ -74,7 +74,7 @@ public class Emp extends EmpExtend{
         return sal;
     }
 
-    public void setSal(double sal) {
+    public void setSal(Double sal) {
         this.sal = sal;
     }
 

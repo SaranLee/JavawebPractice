@@ -32,7 +32,7 @@ public class EmpServiceImpl implements EmpService {
     }
 
     @Override
-    public void modify(Emp emp) {
-        dao.modify(emp);
+    public void modify(Integer oldEmpNo, Emp emp) {
+        dao.modify(oldEmpNo, emp);
     }
 }

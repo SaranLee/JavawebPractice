@@ -7,5 +7,5 @@ import java.util.List;
 public interface EmpDao {
     List<Emp> getAll();
     void delete(Emp emp);
-    void modify(Emp emp);
+    void modify(Integer oldEmpNo, Emp emp);
 }

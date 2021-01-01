@@ -1,7 +1,8 @@
 <%@ page import="scu.demo.domain.User" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Iterator" %>
-<%@ page import="scu.demo.domain.Emp" %><%--
+<%@ page import="scu.demo.domain.Emp" %>
+<%@ page import="scu.demo.domain.Dept" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2020/12/31
@@ -26,6 +27,8 @@
     <!-- 离线 Google 字体: Source Sans Pro -->
     <link href="${pageContext.request.contextPath}/static/adminlte/dist/css/google.css?family=Source+Sans+Pro:300,400,400i,700"
           rel="stylesheet">
+    <!-- layer -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/layui/css/modules/layer/default/layer.css">
 </head>
 <body class="sidebar-mini" style="height: auto;">
 <div class="wrapper">
@@ -93,16 +96,20 @@
                                         Iterator<Emp> itr = emps.iterator();
                                         while (itr.hasNext()) {
                                             Emp emp = itr.next();
+                                            if(emp.getDept() == null)
+                                                emp.setDept(new Dept());
+                                            if(emp.getMgrEmp() == null)
+                                                emp.setMgrEmp(new Emp());
                                             System.out.println(emp);
                                     %>
                                     <tr>
                                         <td><%=++i%></td>
-                                        <td id="t_empNo"><%=emp.getEmpNo()%></td>
-                                        <td id="t_eName"><%=emp.getEName()%></td>
-                                        <td id="t_job"><%=emp.getJob()%></td>
-                                        <td id="t_mgr"><%=emp.getMgrEmp().getEName()%></td>
-                                        <td id="t_sal"><%=emp.getSal()%></td>
-                                        <td id="t_dept"><%=emp.getDept().getDName()%></td>
+                                        <td><%=emp.getEmpNo()%></td>
+                                        <td><%=emp.getEName()%></td>
+                                        <td><%=emp.getJob()%></td>
+                                        <td><%=emp.getMgrEmp().getEName()%></td>
+                                        <td><%=emp.getSal()%></td>
+                                        <td><%=emp.getDept().getDName()%></td>
                                         <td>
                                             <button type="button" class="btn btn-danger btn-sm btn_del col-sm-5 btn_del"
                                                     id="del_<%=emp.getEmpNo()%>">删&nbsp&nbsp除
@@ -390,7 +397,7 @@
                         <div class="form-group row">
                             <label for="mgr" class="col-sm-3 col-form-label font-weight-normal">上&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp级</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="mgr">
+                                <input type="text" class="form-control" id="mgr" disabled>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -402,7 +409,7 @@
                         <div class="form-group row">
                             <label for="dept" class="col-sm-3 col-form-label font-weight-normal">所在部门</label>
                             <div class="col-sm-9">
-                                <select id="dept" class="form-control">
+                                <select id="dept" class="form-control" disabled>
                                     <option selected value="1">ACCOUNTING</option>
                                     <option value="2">RESEARCH</option>
                                     <option value="3">SALES</option>
@@ -442,26 +449,61 @@
 <script src="${pageContext.request.contextPath}/static/adminlte/plugins/chart.js/Chart.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/adminlte/dist/js/demo.js"></script>
 <script src="${pageContext.request.contextPath}/static/adminlte/dist/js/pages/dashboard3.js"></script>
+<script src="${pageContext.request.contextPath}/static/layui/lay/modules/layer.js"></script>
 <!-- 自己的js -->
 <script src="${pageContext.request.contextPath}/static/js/my.js"></script>
 
 <script>
     setHighlightAndMenuOpen("员工管理", "员工列表");
+
+    var $empNo, $eName, $job, $mgr, $sal;
     $(".btn_mod").click(function () {
         var id = $(this).attr("id");
         var empNo = id.split("_")[1];
         //显示模态框
         $("#info").modal("show");
         //装填数据
-        $("#empNo").val($("#t_empNo").text());
-        $("#eName").val($("#t_eName").text());
-        $("#job").val($("#t_job").text());
-        $("#mgr").val($("#t_mgr").text());
-        $("#sal").val($("#t_sal").text());
+        $sal = $(this).parent().prev().prev();
+        $mgr = $sal.prev();
+        $job = $mgr.prev();
+        $eName = $job.prev();
+        $empNo = $eName.prev();
+        $("#empNo").val($empNo.text());
+        $("#eName").val($eName.text());
+        $("#job").val($job.text());
+        $("#mgr").val($mgr.text());
+        $("#sal").val($sal.text());
         //$("#dept").val($("#t_dept").text());
+
+        console.info($empNo.text());
+        console.info($("#empNo").val());
+        console.info($("#eName").val());
+        console.info($("#job").val());
+        console.info($("#sal").val());
+        $("#btn_modify").click(function () {
+            $.ajax({
+                url:"${pageContext.request.contextPath}/emp?method=modify",
+                type:'post',
+                data:{
+                    oldEmpNo:$empNo.text(),
+                    empNo:$("#empNo").val(),
+                    eName:$("#eName").val(),
+                    job:$("#job").val(),
+                    sal:$("#sal").val()
+                    //mgr:$("#mgr").val(),
+                },
+                success: function(rtnText){
+                    if(rtnText === "ok") {
+                        //模态框消失
+                        $("#info").modal("hide");
+                        layer.msg("修改成功", {time: 1000, offset: '50%, 50%'}, function () {
+                            window.location = "${pageContext.request.contextPath}/emp?method=list";
+                        });
+                    }
+                }
+            });
+        })
     });
-    $("#btn_modify").click(function () {
-        $.post("/emp?method=modify");
-    })
+
 
 </script>
