@@ -96,17 +96,17 @@ public class Emp extends EmpExtend{
 
     @Override
     public String toString() {
-        return "Emp{" +
-                "empNo=" + empNo +
-                ", eName='" + eName + '\'' +
-                ", eGender='" + eGender + '\'' +
-                ", eAge=" + eAge +
-                ", job='" + job + '\'' +
-                ", mgr=" + mgr +
-                ", hireDate=" + hireDate +
-                ", sal=" + sal +
-                ", comm=" + comm +
-                ", deptNo=" + deptNo +
+        return "{" +
+                "\"empNo\":" + empNo +
+                ", \"eName\":\"" + eName + '\"' +
+                ", \"eGender\":\"" + eGender + '\"' +
+                ", \"eAge\":" + eAge +
+                ", \"job\":\"" + job + '\"' +
+                ", \"mgr\":" + mgr +
+                ", \"hireDate\":\"" + hireDate + '\"' +
+                ", \"sal\":" + sal +
+                ", \"comm\":" + comm +
+                ", \"deptNo\":" + deptNo +
                 '}';
     }
 }

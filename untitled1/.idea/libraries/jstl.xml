@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="druid-1.0.9 (2)">
+  <library name="jstl">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/12-17-JDBC/druid-1.0.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/jstl.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

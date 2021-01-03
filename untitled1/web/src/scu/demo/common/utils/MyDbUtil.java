@@ -3,6 +3,7 @@ package scu.demo.common.utils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Method;
+import java.math.BigInteger;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -223,4 +224,16 @@ public class MyDbUtil {
 
     }
 
+    public static int getTotalRecordCount(String tableName){
+        Connection conn = JDBCUtil.getConn();
+        try {
+            PreparedStatement ps = conn.prepareStatement("select count(empNo) from " + tableName);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next())
+                return rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
 }

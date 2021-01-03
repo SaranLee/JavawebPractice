@@ -23,5 +23,7 @@
     <orderEntry type="library" name="commons-io-2.5" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.5.35" level="application_server_libraries" />
     <orderEntry type="library" name="mysql-connector-java-5.1.40-bin" level="project" />
+    <orderEntry type="library" name="jstl" level="project" />
+    <orderEntry type="library" name="standard" level="project" />
   </component>
 </module>
