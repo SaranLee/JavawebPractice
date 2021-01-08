@@ -1,4 +1,4 @@
-<%@ page import="scu.demo.domain.User" %><%--
+<%@ page import="scu.demo.demo.domain.User" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2020/12/25

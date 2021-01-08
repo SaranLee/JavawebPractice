@@ -15,9 +15,9 @@ import java.io.IOException;
 public class DownloadServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String realPath = "D:\\IDEAProjects\\untitled1\\out\\artifacts\\web_war_exploded\\static\\img\\avatar3.png";
+        String realPath = "D:\\LJJ\\CG\\homework\\room";
         File file = new File(realPath);
-        String fileName = java.net.URLEncoder.encode("头像.png","utf-8");
+        String fileName = java.net.URLEncoder.encode("file.obj","utf-8");
 
         resp.setContentType(getServletContext().getMimeType(realPath));
         resp.setHeader("Content-Disposition", "attachment; filename=" + fileName);

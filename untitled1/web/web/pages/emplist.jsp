@@ -1,8 +1,8 @@
-<%@ page import="scu.demo.domain.User" %>
+<%@ page import="scu.demo.demo.domain.User" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Iterator" %>
-<%@ page import="scu.demo.domain.Emp" %>
-<%@ page import="scu.demo.domain.Dept" %>
+<%@ page import="scu.demo.demo.domain.Emp" %>
+<%@ page import="scu.demo.demo.domain.Dept" %>
 <%@ page import="scu.demo.common.Constant" %>
 <%--
   Created by IntelliJ IDEA.

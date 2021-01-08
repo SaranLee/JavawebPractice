@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="demo.mapper.UserDao">
+    <resultMap id="userMap" type="User">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+    </resultMap>
+
+    <sql id="colName">
+        id, username, birthday, sex, address
+    </sql>
+
+    <select id="getUserById" parameterType="java.lang.Integer" resultType="demo.domain.User">
+        select  id, username ,birthday,sex , address from user where id  = #{id}
+    </select>
+    <select id="getAllUsers" resultType="demo.domain.User">
+        select  id, username ,birthday,sex , address from user
+    </select>
+    <select id="getUserByAddrAndSex" resultType="demo.domain.User">
+        select * from user where address = #{addr} and sex = #{sex}
+    </select>
+    <select id="getUserByAddrAndSexUser" resultType="demo.domain.User">
+        select * from user where address = #{user.address} and sex = #{user.sex}
+    </select>
+    <select id="getUserByAddrs" resultType="demo.domain.User">
+        select * from user where address in
+        <foreach collection="addrs" item="addr" open="(" close=")" separator=", ">
+            #{addr}
+        </foreach>
+    </select>
+    <select id="getUserLikeName" resultType="demo.domain.User">
+        select * from user where username like '${pattern}%'
+    </select>
+    <select id="getUserLikeName1" parameterType="string" resultType="demo.domain.User">
+       select * from user where username like CONCAT('%',#{pattern},'%')
+    </select>
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="id">
+        insert into user(username, birthday, sex, address) values (#{username}, #{birthday}, #{sex}, #{address})
+    </insert>
+    <update id="updateUserByUsername">
+        update user set birthday = #{birthday}, sex = #{sex}, address = #{address} where username = #{username}
+    </update>
+
+    <select id="getUsers" resultMap="userMap">
+        select * from user
+    </select>
+    <select id="listByUser" resultMap="userMap">
+        select <include refid="colName"/> from user
+        <where>
+            <if test="username != null and username != ''">
+                and username = #{username}
+            </if>
+            <if test="address != null and address != ''">
+                and address = #{address}
+            </if>
+            <if test="sex != null and sex != ''">
+                and sex = #{sex}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateUserById">
+        update user
+        <set>
+            <if test="username != null and username != ''">
+                username=#{username},
+            </if>
+            <if test="sex != null and sex != ''">
+                sex=#{sex},
+            </if>
+            <if test="address != null and address != ''">
+                address=#{address}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <insert id="insertUsers" useGeneratedKeys="true" keyProperty="id">
+        insert into user(username, birthday, sex, address) values
+        <foreach collection="list" item="user" separator=",">
+            (#{user.username}, #{user.birthday}, #{user.sex}, #{user.address})
+        </foreach>
+    </insert>
+</mapper>

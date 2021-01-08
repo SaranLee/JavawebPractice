@@ -1,4 +1,4 @@
-<%@ page import="scu.demo.domain.User" %>
+<%@ page import="scu.demo.demo.domain.User" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Iterator" %><%--
   Created by IntelliJ IDEA.

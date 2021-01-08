@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="demo.mapper.ProductDao">
+    <resultMap id="BaseMap" type="Product">
+        <id property="id" column="pid"/>
+        <result property="name" column="pname"/>
+        <result property="cid" column="category_id"/>
+        <association property="category" javaType="Category">
+            <id property="id" column="cid"/>
+            <result property="name" column="cname"/>
+        </association>
+    </resultMap>
+    <select id="getProductById" resultMap="BaseMap">
+        SELECT * FROM products p LEFT JOIN category c ON p.category_id = c.cid WHERE p.pid=#{id};
+    </select>
+</mapper>

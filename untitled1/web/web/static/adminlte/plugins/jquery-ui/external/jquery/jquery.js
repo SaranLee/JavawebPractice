@@ -9454,7 +9454,7 @@ jQuery.extend( {
 
 		var
 
-			// Cross-domain detection vars
+			// Cross-demo.domain detection vars
 			parts,
 
 			// Loop variable
@@ -9597,7 +9597,7 @@ jQuery.extend( {
 		// Extract dataTypes list
 		s.dataTypes = jQuery.trim( s.dataType || "*" ).toLowerCase().match( rnotwhite ) || [ "" ];
 
-		// A cross-domain request is in order when we have a protocol:host:port mismatch
+		// A cross-demo.domain request is in order when we have a protocol:host:port mismatch
 		if ( s.crossDomain == null ) {
 			parts = rurl.exec( s.url.toLowerCase() );
 			s.crossDomain = !!( parts &&
@@ -10147,7 +10147,7 @@ jQuery.ajaxSettings.xhr = window.ActiveXObject !== undefined ?
 		}
 
 		// Support: IE 9-11
-		// IE seems to error on cross-domain PATCH requests when ActiveX XHR
+		// IE seems to error on cross-demo.domain PATCH requests when ActiveX XHR
 		// is used. In IE 9+ always use the native XHR.
 		// Note: this condition won't catch Edge as it doesn't define
 		// document.documentMode but it also doesn't support ActiveX so it won't
@@ -10193,7 +10193,7 @@ if ( xhrSupported ) {
 
 	jQuery.ajaxTransport( function( options ) {
 
-		// Cross domain only allowed if supported through XMLHttpRequest
+		// Cross demo.domain only allowed if supported through XMLHttpRequest
 		if ( !options.crossDomain || support.cors ) {
 
 			var callback;
@@ -10226,10 +10226,10 @@ if ( xhrSupported ) {
 					}
 
 					// X-Requested-With header
-					// For cross-domain requests, seeing as conditions for a preflight are
+					// For cross-demo.domain requests, seeing as conditions for a preflight are
 					// akin to a jigsaw puzzle, we simply never set it to be sure.
 					// (it can always be set on a per-request basis or even using ajaxSetup)
-					// For same-domain requests, won't change header if already provided.
+					// For same-demo.domain requests, won't change header if already provided.
 					if ( !options.crossDomain && !headers[ "X-Requested-With" ] ) {
 						headers[ "X-Requested-With" ] = "XMLHttpRequest";
 					}
@@ -10282,7 +10282,7 @@ if ( xhrSupported ) {
 								}
 
 								// Firefox throws an exception when accessing
-								// statusText for faulty cross-domain requests
+								// statusText for faulty cross-demo.domain requests
 								try {
 									statusText = xhr.statusText;
 								} catch ( e ) {
@@ -10389,7 +10389,7 @@ jQuery.ajaxPrefilter( "script", function( s ) {
 // Bind script tag hack transport
 jQuery.ajaxTransport( "script", function( s ) {
 
-	// This transport only deals with cross domain requests
+	// This transport only deals with cross demo.domain requests
 	if ( s.crossDomain ) {
 
 		var script,

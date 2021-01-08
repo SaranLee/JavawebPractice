@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 开启注解 -->
+    <context:annotation-config />
+    <!-- 配置容器资源扫描的包 -->
+    <context:component-scan base-package="demo"/>
+
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <bean id="prop" class="demo.domain.Student" p:name="${driver}"/>
+
+    <bean id="stu1" class="demo.domain.Student">
+        <constructor-arg value="ljj"/>
+        <constructor-arg value="12"/>
+    </bean>
+    <bean id="stu2" class="demo.domain.Student">
+        <property name="name" value="Jiajun"/>
+        <property name="age" value="12"/>
+        <property name="monitor">
+            <null/>
+        </property>
+    </bean>
+    <bean id="stu3" class="demo.domain.Student">
+        <property name="monitor" ref="stu1"/>
+        <property name="grades">
+            <array>
+                <value>90</value>
+                <value>90</value>
+                <value>100</value>
+            </array>
+        </property>
+        <property name="friends">
+            <list>
+                <ref bean="stu1"/>
+                <ref bean="stu2"/>
+                <ref bean="stu4"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="stu4" class="demo.domain.Student">
+        <property name="monitor">
+            <bean class="demo.domain.Student" p:name="ljj"/>
+        </property>
+    </bean>
+    <bean id="stu5" class="demo.domain.Student">
+        <property name="map">
+            <map>
+                <entry>
+                    <key><value>1</value></key>
+                    <value>str1</value>
+                </entry>
+                <entry key="2" value="str2"/>
+                <entry key="3" value-ref="str3"/>
+            </map>
+        </property>
+    </bean>
+    <bean id="str3" name="str3" class="java.lang.String"/>
+</beans>

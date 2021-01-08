@@ -62943,8 +62943,8 @@ module.exports = DocMeasure;
 /* qr.js -- QR code generator in Javascript (revision 2011-01-19)
  * Written by Kang Seonghoon <public+qrjs@mearie.org>.
  *
- * This source code is in the public domain; if your jurisdiction does not
- * recognize the public domain the terms of Creative Commons CC0 license
+ * This source code is in the public demo.domain; if your jurisdiction does not
+ * recognize the public demo.domain the terms of Creative Commons CC0 license
  * apply. In the other words, you can always do what you want.
  */
 
